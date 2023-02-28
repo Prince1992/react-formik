@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { Formik, useFormik } from 'formik';
 import React from 'react';
 
 const initialValues = {
@@ -35,36 +35,56 @@ function YoutubeForm() {
     validate,
   });
 
-  //console.log('Form Values', formik.values);
+  console.log('Form Values', formik.values);
+  console.log('Form Values', formik.errors);
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-        />
-
-        <label>E-mail</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-
-        <label>Channel</label>
-        <input
-          type="text"
-          id="channel"
-          name="channel"
-          onChange={formik.handleChange}
-          value={formik.values.channel}
-        />
+        <div className="form-control">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          {formik.errors.name ? (
+            <div style={{ color: 'red' }}> {formik.errors.name}</div>
+          ) : (
+            ''
+          )}
+        </div>
+        <div className="form-control">
+          <label>E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+          {formik.errors.email ? (
+            <div style={{ color: 'red' }}> {formik.errors.email}</div>
+          ) : (
+            ''
+          )}
+        </div>
+        <div className="form-control">
+          <label>Channel</label>
+          <input
+            type="text"
+            id="channel"
+            name="channel"
+            onChange={formik.handleChange}
+            value={formik.values.channel}
+          />
+          {formik.errors.channel ? (
+            <div style={{ color: 'red' }}> {formik.errors.channel}</div>
+          ) : (
+            ''
+          )}
+        </div>
 
         <button type="submit">Submit</button>
       </form>
