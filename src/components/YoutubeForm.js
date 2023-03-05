@@ -1,4 +1,4 @@
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import React from 'react';
 
 const initialValues = {
@@ -48,7 +48,7 @@ function YoutubeForm() {
             value={formik.values.name}
             onBlur={formik.handleBlur}
           />
-          {formik.errors.name ? (
+          {formik.touched.name && formik.errors.name ? (
             <div style={{ color: 'red' }}> {formik.errors.name}</div>
           ) : (
             ''
@@ -64,7 +64,7 @@ function YoutubeForm() {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          {formik.errors.email ? (
+          {formik.touched.email && formik.errors.email ? (
             <div style={{ color: 'red' }}> {formik.errors.email}</div>
           ) : (
             ''
@@ -80,7 +80,7 @@ function YoutubeForm() {
             onBlur={formik.handleBlur}
             value={formik.values.channel}
           />
-          {formik.errors.channel ? (
+          {formik.touched.channel && formik.errors.channel ? (
             <div style={{ color: 'red' }}> {formik.errors.channel}</div>
           ) : (
             ''
