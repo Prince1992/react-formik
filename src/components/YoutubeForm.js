@@ -29,11 +29,18 @@ const validate = (values) => {
   return errors;
 };
 
+const validationSchema = Yup.object({
+  name: Yup.string().required('Required !'),
+  email: Yup.string().email('Invalid email format !').required('Required !'),
+  channel: Yup.string().required('Required !'),
+});
+
 function YoutubeForm() {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validate,
+    //validate,
+    validationSchema,
   });
 
   return (
